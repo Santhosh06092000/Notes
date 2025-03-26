@@ -10,6 +10,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
 import { signInUser } from "../../auth/user_auth";
 import { useMutation } from "@tanstack/react-query";
+import { encode } from "../../utils/hashing";
 
 interface SignInFormProps {}
 
@@ -20,8 +21,9 @@ const SignInForm: FunctionComponent<SignInFormProps> = () => {
     mutationFn: signInUser,
     onSuccess: (data) => {
       console.log("Login successful:", data);
-      // localStorage.setItem("token", data.token); // Store token
-      nav("/"); // Redirect on success
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", encode(data.user));
+      nav("/");
     },
     onError: (error) => {
       console.error("Login failed:", error);
