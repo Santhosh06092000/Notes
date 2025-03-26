@@ -1,12 +1,12 @@
 import "./SignUp.scss";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import Typography from "../../components/Typography/Typography";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { ISignUp } from "./ISignUp";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import TextFieldController from "../../components/TextField/TextFieldController";
-import { Button } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { signUpUser } from "../../auth/user_auth";
@@ -14,6 +14,7 @@ import { signUpUser } from "../../auth/user_auth";
 interface SignUpFormProps {}
 
 const SignUpForm: FunctionComponent<SignUpFormProps> = () => {
+  const [open, setOpen] = useState(false);
   const nav = useNavigate();
 
   // signup api
@@ -26,7 +27,8 @@ const SignUpForm: FunctionComponent<SignUpFormProps> = () => {
     },
     onError: (error) => {
       console.error("Login failed:", error);
-      alert("Invalid email or password");
+      // alert("Invalid email or password");
+      setOpen(true);
     },
   });
 
@@ -96,6 +98,23 @@ const SignUpForm: FunctionComponent<SignUpFormProps> = () => {
           </Button>
         </div>
       </form>
+
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        // action={action}
+      >
+        <Alert
+          onClose={() => setOpen(false)}
+          severity="error"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          Email already exists.
+        </Alert>
+      </Snackbar>
     </FormProvider>
   );
 };
