@@ -1,0 +1,25 @@
+.sign-in {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  height: 100%;
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 8px;
+}
+
+.lable-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sign-in-form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}

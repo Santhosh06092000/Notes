@@ -1,0 +1,33 @@
+$primary-color: #e9b382;
+$secondary-color: #a1ccd2;
+$background-color: #f4f1de;
+
+// action
+$cancel-bg: #8c8c8c;
+$danger-bg: #c00000;
+$success-bg: #4ade80;
+$warning-bg: #ffb400;
+$alternative-bg: #6226efa6;
+
+// text color
+$primary-text: #000000;
+$secondary-text: #202224;
+$ternary-text: #565656;
+
+// font
+$font-family: "Outfit";
+$font-size: 16px;
+$font-weight: 250;
+
+:export {
+  fontFamily: $font-family;
+  fontSize: $font-size;
+  fontWeight: $font-weight;
+  primary: $primary-color;
+  secondary: $secondary-color;
+  error: $danger-bg;
+  warning: $warning-bg;
+  success: $success-bg;
+  text: $primary-text;
+  secondaryText: $secondary-text;
+}

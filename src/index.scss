@@ -1,0 +1,32 @@
+@use "./scss/variables.module.scss" as V;
+
+:root {
+  font-style: normal;
+  font-optical-sizing: auto;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: V.$font-family, sans-serif !important;
+  font-size: V.$font-size;
+  line-height: 1.25rem;
+  font-weight: V.$font-weight;
+  color: V.$primary-text;
+
+  margin: 0;
+  display: flex;
+  place-items: center;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+* {
+  -ms-overflow-style: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}

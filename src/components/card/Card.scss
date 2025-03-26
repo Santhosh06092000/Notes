@@ -1,0 +1,19 @@
+@use "../../scss/variables.module.scss" as V;
+
+.card {
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.card-header {
+  background-color: #f3d1b5;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.card-body {
+  padding: 32px;
+}

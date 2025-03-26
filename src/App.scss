@@ -1,0 +1,7 @@
+@use "./scss/variables.module.scss" as V;
+
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: V.$background-color;
+}
