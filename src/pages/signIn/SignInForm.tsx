@@ -23,7 +23,7 @@ const SignInForm: FunctionComponent<SignInFormProps> = () => {
       console.log("Login successful:", data);
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", encode(data.user));
-      nav("/");
+      nav("/notes");
     },
     onError: (error) => {
       console.error("Login failed:", error);

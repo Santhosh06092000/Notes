@@ -4,6 +4,7 @@ import PrivateRoute from "./router/privateRoute";
 import Home from "./pages/home/Home";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
+import Notes from "./pages/notes/Notes";
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route path="/notes" />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/about" />
+          <Route path="/account" />
         </Route>
       </Routes>
     </>

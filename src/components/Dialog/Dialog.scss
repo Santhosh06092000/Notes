@@ -1,0 +1,13 @@
+.dialogTitleClassName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3d1b5;
+  border-bottom: 1px solid #000;
+  place-items: center;
+}
+
+.dialogActionClassName {
+  padding-bottom: 16px;
+  gap: 8px;
+}

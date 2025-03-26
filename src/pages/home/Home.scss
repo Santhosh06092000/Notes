@@ -1,0 +1,30 @@
+@use "../../scss/variables.module.scss" as V;
+
+.home {
+  height: 100%;
+  //   margin-inline: 15%;
+}
+
+.home-header {
+  padding-block: 16px;
+  background-color: V.$secondary-color;
+  padding-inline: 15%;
+  color: rgb(30, 116, 137);
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-list {
+  display: flex;
+  gap: 8px;
+  place-content: center;
+  place-items: center;
+}
+
+.home-section {
+  padding-inline: 15%;
+}
+
+.main {
+  height: 100%;
+}
