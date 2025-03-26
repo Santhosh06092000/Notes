@@ -1,6 +1,6 @@
 export interface SignInProps {}
 
 export interface ISignIn {
-  email: string;
+  user_email: string;
   password: string;
 }

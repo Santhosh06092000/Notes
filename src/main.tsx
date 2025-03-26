@@ -9,6 +9,7 @@ import createCache from "@emotion/cache";
 import pallet from "./scss/variables.module.scss";
 import { BrowserRouter } from "react-router";
 import { CacheProvider } from "@emotion/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // In mui takes first prefrence on css file instead of default
 const cache = createCache({
@@ -70,16 +71,20 @@ const theme = createTheme({
   },
 });
 
+const queryClient = new QueryClient();
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <CacheProvider value={cache}>
-        <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </BrowserRouter>
-      </CacheProvider>
+      <QueryClientProvider client={queryClient}>
+        <CacheProvider value={cache}>
+          <BrowserRouter>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </BrowserRouter>
+        </CacheProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   </StrictMode>
 );

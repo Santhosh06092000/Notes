@@ -8,14 +8,29 @@ import { z } from "zod";
 import TextFieldController from "../../components/TextField/TextFieldController";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
+import { signInUser } from "../../auth/user_auth";
+import { useMutation } from "@tanstack/react-query";
 
 interface SignInFormProps {}
 
 const SignInForm: FunctionComponent<SignInFormProps> = () => {
   const nav = useNavigate();
+  // signin api
+  const signinMutation = useMutation({
+    mutationFn: signInUser,
+    onSuccess: (data) => {
+      console.log("Login successful:", data);
+      // localStorage.setItem("token", data.token); // Store token
+      nav("/"); // Redirect on success
+    },
+    onError: (error) => {
+      console.error("Login failed:", error);
+      alert("Invalid email or password");
+    },
+  });
   // schema
   const signIn = z.object({
-    email: z
+    user_email: z
       .string({ message: "Please enter email" })
       .email({ message: "Invalid email address" }),
     password: z.string({ message: "Please enter password" }),
@@ -28,6 +43,7 @@ const SignInForm: FunctionComponent<SignInFormProps> = () => {
 
   // form submit
   const onSubmit: SubmitHandler<ISignIn> = (val) => {
+    signinMutation.mutate(val);
     console.log(val);
   };
 
@@ -39,8 +55,8 @@ const SignInForm: FunctionComponent<SignInFormProps> = () => {
         </Typography>
 
         <div className="lable-input">
-          <label htmlFor="email">Email</label>
-          <TextFieldController name="email" />
+          <label htmlFor="user_email">Email</label>
+          <TextFieldController name="user_email" />
         </div>
         <div className="lable-input">
           <label htmlFor="password">Password</label>

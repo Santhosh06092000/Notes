@@ -12,7 +12,7 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
     <div className="sign-up">
       <Card>
         <CardHeader>
-          <Typography>Register</Typography>
+          <Typography>Signup</Typography>
           {/* <span>...</span> */}
         </CardHeader>
         <CardBody>

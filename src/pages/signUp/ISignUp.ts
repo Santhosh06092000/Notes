@@ -1,6 +1,8 @@
 export interface SignUpProps {}
 
 export interface ISignUp {
-  email: string;
+  user_name: string;
+  user_email: string;
   password: string;
+  conform_password?: string;
 }
