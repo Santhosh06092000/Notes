@@ -8,9 +8,11 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchNotes } from "../../auth/notes_auth";
 import Dialog from "../../components/Dialog/Dialog";
 import NoteForm from "./NoteForm";
+import { useSearchParams } from "react-router";
 
 const Notes: FunctionComponent<NotesProps> = () => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [_, setSearchParams] = useSearchParams();
   // Fetch Notes
   const { data: notes } = useQuery({
     queryKey: ["notes"],
@@ -30,7 +32,10 @@ const Notes: FunctionComponent<NotesProps> = () => {
 
       <Dialog
         open={openDialog}
-        setOpen={setOpenDialog}
+        setOpen={() => {
+          setOpenDialog(false);
+          setSearchParams({});
+        }}
         Dialog_Title={"Notes"}
         Dialog_Content={<NoteForm setOpenDialog={setOpenDialog} />}
       />

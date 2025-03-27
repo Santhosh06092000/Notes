@@ -20,7 +20,7 @@ interface NoteFormProps {
 const NoteForm: FunctionComponent<NoteFormProps> = (props) => {
   const { setOpenDialog } = props;
   const queryClient = useQueryClient();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const { data: selectedNote } = useGetOneNoteById(
     searchParams.get("note_id") || ""
   );
@@ -67,11 +67,11 @@ const NoteForm: FunctionComponent<NoteFormProps> = (props) => {
 
   useEffect(() => {
     methods.reset(selectedNote);
-    return () => {
-      if (selectedNote?.note_id) {
-        setSearchParams({});
-      }
-    };
+    // return () => {
+    //   if (selectedNote?.note_id) {
+    //     setSearchParams({});
+    //   }
+    // };
   }, [selectedNote]);
 
   return (
