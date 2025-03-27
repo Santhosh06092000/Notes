@@ -14,11 +14,11 @@ import { Button } from "@mui/material";
 import { useSearchParams } from "react-router";
 
 interface NoteFormProps {
-  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  handleCloseDialog: () => void;
 }
 
 const NoteForm: FunctionComponent<NoteFormProps> = (props) => {
-  const { setOpenDialog } = props;
+  const { handleCloseDialog } = props;
   const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
   const { data: selectedNote } = useGetOneNoteById(
@@ -30,7 +30,7 @@ const NoteForm: FunctionComponent<NoteFormProps> = (props) => {
     mutationFn: createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
-      setOpenDialog(false);
+      handleCloseDialog();
     },
   });
 
@@ -39,7 +39,7 @@ const NoteForm: FunctionComponent<NoteFormProps> = (props) => {
     mutationFn: updateNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
-      setOpenDialog(false);
+      handleCloseDialog();
     },
   });
 
@@ -67,11 +67,6 @@ const NoteForm: FunctionComponent<NoteFormProps> = (props) => {
 
   useEffect(() => {
     methods.reset(selectedNote);
-    // return () => {
-    //   if (selectedNote?.note_id) {
-    //     setSearchParams({});
-    //   }
-    // };
   }, [selectedNote]);
 
   return (
@@ -94,7 +89,9 @@ const NoteForm: FunctionComponent<NoteFormProps> = (props) => {
             type="button"
             variant="contained"
             color="error"
-            onClick={() => setOpenDialog(false)}
+            onClick={() => {
+              handleCloseDialog();
+            }}
           >
             Cancel
           </Button>

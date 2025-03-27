@@ -19,6 +19,11 @@ const Notes: FunctionComponent<NotesProps> = () => {
     queryFn: fetchNotes,
   });
 
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    setSearchParams({});
+  };
+
   return (
     <div className="notes-list">
       <NotesList notes={notes ?? []} setOpenDialog={setOpenDialog} />
@@ -32,12 +37,9 @@ const Notes: FunctionComponent<NotesProps> = () => {
 
       <Dialog
         open={openDialog}
-        setOpen={() => {
-          setOpenDialog(false);
-          setSearchParams({});
-        }}
+        setOpen={handleCloseDialog}
         Dialog_Title={"Notes"}
-        Dialog_Content={<NoteForm setOpenDialog={setOpenDialog} />}
+        Dialog_Content={<NoteForm handleCloseDialog={handleCloseDialog} />}
       />
     </div>
   );

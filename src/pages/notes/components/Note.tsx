@@ -11,6 +11,8 @@ import { INote } from "../INotes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteNote } from "../../../auth/notes_auth";
 import { useSearchParams } from "react-router";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import { motion } from "motion/react";
 
 interface NoteProps {
   note: INote;
@@ -42,14 +44,24 @@ const Note: FunctionComponent<NoteProps> = (props) => {
             {note.note_title}
           </Typography>
 
-          <IconButton onClick={() => setIsDelete(true)}>
-            <RemoveCircleOutlineIcon color="error" />
+          <IconButton onClick={() => setIsDelete(!isDelete)}>
+            {isDelete ? (
+              <CancelOutlinedIcon color="error" />
+            ) : (
+              <RemoveCircleOutlineIcon color="error" />
+            )}
           </IconButton>
         </CardHeader>
 
         {isDelete ? (
-          <div className="delete-content">
-            <span>Are you sure want to delete?</span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            key={note.note_id}
+            className="delete-content"
+          >
+            <span>Are you sure, you want to delete?</span>
             <span className="note-form-actions">
               <Button
                 onClick={() => handleDeleteNote(note.note_id!)}
@@ -62,7 +74,7 @@ const Note: FunctionComponent<NoteProps> = (props) => {
                 Cancel
               </Button>
             </span>
-          </div>
+          </motion.div>
         ) : (
           <>
             <CardBody
