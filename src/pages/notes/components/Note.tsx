@@ -38,7 +38,9 @@ const Note: FunctionComponent<NoteProps> = (props) => {
     <>
       <Card>
         <CardHeader>
-          <Typography>{note.note_title}</Typography>
+          <Typography className="note-card-header">
+            {note.note_title}
+          </Typography>
 
           <IconButton onClick={() => setIsDelete(true)}>
             <RemoveCircleOutlineIcon color="error" />

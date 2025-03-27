@@ -12,6 +12,7 @@
     height: 200px;
     border-bottom-right-radius: inherit;
     border-bottom-left-radius: inherit;
+    overflow: hidden;
     .note-footer {
       position: absolute;
       right: 8px;
@@ -47,4 +48,9 @@
   place-items: center;
   gap: 10px;
   height: 200px;
+}
+
+.note-card-header {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
