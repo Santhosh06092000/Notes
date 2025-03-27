@@ -4,7 +4,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 16px;
-  // position: relative;
+  flex-grow: 1;
+  min-height: 0;
+  overflow: auto;
+  padding-bottom: 16px;
   .note-content {
     background-color: #fff;
     position: relative;

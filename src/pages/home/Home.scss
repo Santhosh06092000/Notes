@@ -2,7 +2,9 @@
 
 .home {
   height: 100%;
-  //   margin-inline: 15%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .home-header {
@@ -23,8 +25,15 @@
 
 .home-section {
   padding-inline: 15%;
+  flex-grow: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
-  height: 100%;
+  flex-grow: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
